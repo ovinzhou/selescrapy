@@ -55,6 +55,7 @@ DOWNLOADER_MIDDLEWARES = {
     'selespider.middlewares.RandomUserAgentMiddleware': 400,
     'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware': None,
     # 'selespider.middlewares.SelespiderDownloaderMiddleware': 420,
+    'selespider.middlewares.SplashDownloaderMiddleware': 420,
     'scrapy_splash.SplashCookiesMiddleware': 723,
     'scrapy_splash.SplashMiddleware': 725,
     'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
