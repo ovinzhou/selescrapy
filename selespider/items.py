@@ -10,5 +10,7 @@ import scrapy
 
 class SelespiderItem(scrapy.Item):
     # define the fields for your item here like:
-    # name = scrapy.Field()
-    pass
+    url = scrapy.Field()
+    name = scrapy.Field()
+    image = scrapy.Field()
+    price = scrapy.Field()

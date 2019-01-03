@@ -18,27 +18,27 @@ script = """
          """
 
 
-class SplashDownloaderMiddleware(object):
-
-    @classmethod
-    def from_crawler(cls, crawler):
-        s = cls()
-        crawler.signals.connect(s.spider_opened, signal=signals.spider_opened)
-        return s
-
-    def process_request(self, request, spider):
-        yield SplashRequest(request.url, endpoint='execute', args={'lua_source': script}, callback=self.process_response)
-
-    def process_response(self, request, response, spider):
-        print('-'*50)
-        print(request.url)
-        return response
-
-    def process_exception(self, request, exception, spider):
-        pass
-
-    def spider_opened(self, spider):
-        spider.logger.info('Spider opened: %s' % spider.name)
+# class SplashDownloaderMiddleware(object):
+#
+#     @classmethod
+#     def from_crawler(cls, crawler):
+#         s = cls()
+#         crawler.signals.connect(s.spider_opened, signal=signals.spider_opened)
+#         return s
+#
+#     def process_request(self, request, spider):
+#         yield SplashRequest(request.url, endpoint='execute', args={'lua_source': script}, callback=self.process_response)
+#
+#     def process_response(self, request, response, spider):
+#         print('-'*50)
+#         print(request.url)
+#         return response
+#
+#     def process_exception(self, request, exception, spider):
+#         pass
+#
+#     def spider_opened(self, spider):
+#         spider.logger.info('Spider opened: %s' % spider.name)
 
 
 class SelespiderDownloaderMiddleware(object):

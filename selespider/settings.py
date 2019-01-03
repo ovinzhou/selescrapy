@@ -55,7 +55,7 @@ DOWNLOADER_MIDDLEWARES = {
     'selespider.middlewares.RandomUserAgentMiddleware': 400,
     'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware': None,
     # 'selespider.middlewares.SelespiderDownloaderMiddleware': 420,
-    'selespider.middlewares.SplashDownloaderMiddleware': 420,
+    # 'selespider.middlewares.SplashDownloaderMiddleware': 420,
     'scrapy_splash.SplashCookiesMiddleware': 723,
     'scrapy_splash.SplashMiddleware': 725,
     'scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware': 810,
@@ -72,9 +72,9 @@ HTTPCACHE_STORAGE = 'scrapy_splash.SplashAwareFSCacheStorage'
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-# ITEM_PIPELINES = {
-#    'selespider.pipelines.SelespiderPipeline': 300,
-# }
+ITEM_PIPELINES = {
+   'selespider.pipelines.SelespiderPipeline': 300,
+}
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
