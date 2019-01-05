@@ -41,20 +41,31 @@ class AmazonSpider(Spider):
 
         url_list = response.xpath('//*[@class="a-link-normal s-access-detail-page  s-color-twister-title-link a-text-normal"]/@href').extract()
         name_list = response.xpath('//*[@class="s-access-image cfMarker"]/@alt').extract()
-        image_list = response.xpath('//*[@class="s-access-image cfMarker"]/@src').extract()
+        image_url_list = response.xpath('//*[@class="s-access-image cfMarker"]/@src').extract()
         price_list = response.xpath('//*[@class="a-size-base a-color-price s-price a-text-bold"]/text()').extract()
 
-        for url, name, image, price in zip(url_list, name_list, image_list, price_list):
-            yield_url = 'https://www.amazon.cn' + url
-            yield SplashRequest(yield_url, callback=self.next_parse, endpoint='execute', args={'lua_source': script}, meta={
-                'name': name,
-                'image': image,
-                'price': price[1:],
-            })
+        items = SelespiderItem()
 
-    def next_parse(self, response):
-        print(response.meta)
-        with open('amazon_detail.html', 'w', encoding='utf-8') as f:
-            f.write(response.text)
+        for url, name, image_url, price in zip(url_list, name_list, image_url_list, price_list):
 
-        return
+            items['url'] = 'https://www.amazon.cn' + url
+            items['name'] = name
+            items['image_url'] = image_url
+            items['price'] = price
+
+            yield items
+
+            # yield_url = 'https://www.amazon.cn' + url
+            # yield SplashRequest(yield_url, callback=self.next_parse, endpoint='execute', args={'lua_source': script},
+            #                     meta={
+            #                         'name': name,
+            #                         'image': image,
+            #                         'price': price[1:],
+            #                     })
+
+    # def next_parse(self, response):
+    #     print(response.meta)
+    #     with open('amazon_detail.html', 'w', encoding='utf-8') as f:
+    #         f.write(response.text)
+    #
+    #     return

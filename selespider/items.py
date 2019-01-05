@@ -12,5 +12,5 @@ class SelespiderItem(scrapy.Item):
     # define the fields for your item here like:
     url = scrapy.Field()
     name = scrapy.Field()
-    image = scrapy.Field()
+    image_url = scrapy.Field()
     price = scrapy.Field()

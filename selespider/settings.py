@@ -118,4 +118,10 @@ USER_AGENT_LIST = [
 ]
 
 # 配置Splash服务地址
-SPLASH_URL = 'http://192.168.9.123:8050'
+SPLASH_URL = 'http://localhost:8050'
+
+# Mysql 的配置
+MYSQL_HOST = 'localhost'
+MYSQL_PORT = 3306
+MYSQL_USER = 'root'
+MYSQL_PASSWORD = 'mysql'
